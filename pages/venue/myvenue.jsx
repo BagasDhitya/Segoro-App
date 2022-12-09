@@ -26,7 +26,11 @@ const Myvenue = () => {
 
   useEffect(() => {
     setCookiess(getCookie("id"));
-    setVenue({ ...venue, latitude: getCookie("lat"), longitude: getCookie("lng") })
+    setVenue({
+      ...venue,
+      latitude: getCookie("lat"),
+      longitude: getCookie("lng"),
+    });
   }, [venue]);
 
   // Get all venues
@@ -36,7 +40,7 @@ const Myvenue = () => {
 
     var config = {
       method: "get",
-      url: `https://grupproject.site/venues?user_id=${getCookie("user_id")}`,
+      url: `https://altapro.online/venues?user_id=${getCookie("user_id")}`,
       data: data,
     };
 
@@ -70,14 +74,12 @@ const Myvenue = () => {
       description_venue: description_venue,
     };
 
-    axios.post("https://grupproject.site/venues", data)
-      .then(() => {
-        deleteCookie("lat")
-        deleteCookie("lng")
-        getVenues();
-        swal("Success", "Add new venue success", "success")
-          .then(setShow(false))
-      });
+    axios.post("https://altapro.online/venues", data).then(() => {
+      deleteCookie("lat");
+      deleteCookie("lng");
+      getVenues();
+      swal("Success", "Add new venue success", "success").then(setShow(false));
+    });
   };
 
   useEffect(() => {
@@ -89,22 +91,21 @@ const Myvenue = () => {
     swal("Delete Venue", "Are you sure?", "warning", {
       dangerMode: true,
       buttons: true,
-    })
-      .then((res) => {
-        if (res) {
-          const myPromise = axios.delete(`https://grupproject.site/venues/${id}`)
-            .then(() => {
-              getVenues();
-            });
-          toast.promise(myPromise, {
-            loading: "Waiting...",
-            success: "Delete Successfully",
-            error: "Delete Failed",
+    }).then((res) => {
+      if (res) {
+        const myPromise = axios
+          .delete(`https://altapro.online/venues/${id}`)
+          .then(() => {
+            getVenues();
           });
-        }
-      })
+        toast.promise(myPromise, {
+          loading: "Waiting...",
+          success: "Delete Successfully",
+          error: "Delete Failed",
+        });
+      }
+    });
   };
-
 
   return (
     <div>

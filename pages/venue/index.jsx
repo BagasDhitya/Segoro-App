@@ -22,7 +22,7 @@ const Index = () => {
 
     var config = {
       method: "get",
-      url: "https://grupproject.site/venues",
+      url: "https://altapro.online/venues",
       data: data,
     };
 

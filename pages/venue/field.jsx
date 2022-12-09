@@ -54,7 +54,7 @@ const Field = () => {
   // get detail venue
   const getDetail = () => {
     axios
-      .get(`https://grupproject.site/venues/${getCookie("id")}`)
+      .get(`https://altapro.online/venues/${getCookie("id")}`)
       .then((res) => {
         setDetail(res.data.data);
       });
@@ -63,7 +63,7 @@ const Field = () => {
   // get all fields ==> ini masih nyampur semua GOR
   const getFields = () => {
     axios
-      .get(`https://grupproject.site/fields?venue_id=${getCookie("id")}`)
+      .get(`https://altapro.online/fields?venue_id=${getCookie("id")}`)
       .then((res) => {
         setFields(res.data.data);
         console.log(res.data.data);
@@ -77,16 +77,14 @@ const Field = () => {
 
   // get all schedule by id_field
   const getSchedule = (id) => {
-    axios
-      .get(`https://grupproject.site/schedules?field_id=${id}`)
-      .then((res) => {
-        setAllSchedule(res.data.data);
-      });
+    axios.get(`https://altapro.online/schedules?field_id=${id}`).then((res) => {
+      setAllSchedule(res.data.data);
+    });
   };
 
   const getID = () => {
     axios
-      .get(`https://grupproject.site/venues/${getCookie("id")}`)
+      .get(`https://altapro.online/venues/${getCookie("id")}`)
       .then((res) => {
         setID(res.data.data.user_id);
       });
@@ -99,7 +97,7 @@ const Field = () => {
     const ids = parseInt(idd);
     const result = ids === user_id;
     setUserId(result);
-  }, [user_id,idd]);
+  }, [user_id, idd]);
 
   const handleId = (id) => {
     setIdField(id);
@@ -109,7 +107,7 @@ const Field = () => {
 
   const [price, setPrice] = useState(0);
   const getPrice = (id) => {
-    axios.get(`https://grupproject.site/fields/${id}`).then((res) => {
+    axios.get(`https://altapro.online/fields/${id}`).then((res) => {
       setPrice(res.data.data.price);
     });
   };
@@ -132,7 +130,7 @@ const Field = () => {
     data.append("foto_venue", inputFoto[0]);
 
     axios
-      .post(`https://grupproject.site/venues/foto/${getCookie("id")}`, data)
+      .post(`https://altapro.online/venues/foto/${getCookie("id")}`, data)
       .then((res) => {
         const RES = res.data;
         getDetail();
@@ -159,7 +157,7 @@ const Field = () => {
     };
 
     const myPromise = axios
-      .post("https://grupproject.site/fields", data)
+      .post("https://altapro.online/fields", data)
       .then(() => {
         getFields();
         setShow(false);
@@ -194,7 +192,7 @@ const Field = () => {
       price: parseInt(price),
     };
     const myPromise = axios
-      .put(`https://grupproject.site/fields/${id}`, data2)
+      .put(`https://altapro.online/fields/${id}`, data2)
       .then(() => {
         getFields();
         setShowEdit(false);
@@ -210,7 +208,7 @@ const Field = () => {
   const handleDelete = (id) => {
     var config = {
       method: "delete",
-      url: `https://grupproject.site/fields/${id}`,
+      url: `https://altapro.online/fields/${id}`,
     };
     const myPromise = axios(config).then(() => {
       getFields();
@@ -274,7 +272,7 @@ const Field = () => {
     };
 
     const myPromise = axios
-      .post("https://grupproject.site/schedules", data)
+      .post("https://altapro.online/schedules", data)
       .then(() => {
         getSchedule();
         setShowAddSc(false);
@@ -289,7 +287,7 @@ const Field = () => {
 
   // get schedule per hour
   const getSchedulePerHour = (id, idVenue) => {
-    axios.get(`https://grupproject.site/schedules/${id}`).then((res) => {
+    axios.get(`https://altapro.online/schedules/${id}`).then((res) => {
       setPerHour(res.data.data.schedule_detail);
       setIdVenue(idVenue);
     });
@@ -310,7 +308,7 @@ const Field = () => {
       };
 
       const myPromise = axios
-        .post("https://grupproject.site/bookings/addtocart", data)
+        .post("https://altapro.online/bookings/addtocart", data)
         .then(() => {
           router.push("/order");
         });
@@ -326,7 +324,7 @@ const Field = () => {
     const idN = parseInt(id);
     const newResult = idN === detail.user_id;
     setResult(newResult);
-  }, [detail,id]);
+  }, [detail, id]);
 
   return (
     <Row className={styles.container}>

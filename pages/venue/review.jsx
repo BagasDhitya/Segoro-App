@@ -21,7 +21,7 @@ const Review = () => {
   // get detail venue
   const getDetail = () => {
     axios
-      .get(`https://grupproject.site/venues/${getCookie("id")}`)
+      .get(`https://altapro.online/venues/${getCookie("id")}`)
       .then((res) => {
         setDetail(res.data.data);
       });
@@ -30,7 +30,7 @@ const Review = () => {
   // get all review in id venue
   const getReviews = () => {
     axios
-      .get(`https://grupproject.site/reviews/${getCookie("id")}`)
+      .get(`https://altapro.online/reviews/${getCookie("id")}`)
       .then((res) => {
         setReviews(res.data.data);
       });
@@ -52,7 +52,7 @@ const Review = () => {
     data.append("foto_venue", inputFoto[0]);
 
     axios
-      .post(`https://grupproject.site/venues/foto/${getCookie("id")}`, data)
+      .post(`https://altapro.online/venues/foto/${getCookie("id")}`, data)
       .then((res) => {
         const RES = res.data;
         getDetail();
@@ -90,7 +90,7 @@ const Review = () => {
       data.append(i, addReview[i]);
     }
     const myPromise = axios
-      .post("https://grupproject.site/reviews", data)
+      .post("https://altapro.online/reviews", data)
       .then(() => {
         getReviews();
         setShow(false);
@@ -135,17 +135,19 @@ const Review = () => {
               </OverlayTrigger>
             </div>
             <div className={styles.reviewBox}>
-              {reviews?.length < 1 ? <>No reviews for this venue</> :
+              {reviews?.length < 1 ? (
+                <>No reviews for this venue</>
+              ) : (
                 reviews?.map((obj, index) => {
                   const { name_user, foto_user, rate, feedback, foto_review } =
                     obj;
                   if (rate > 5) {
-                    var greyStars = 0
+                    var greyStars = 0;
                   } else {
-                    var greyStars = 5 - rate
+                    var greyStars = 5 - rate;
                   }
 
-                  console.log(greyStars)
+                  console.log(greyStars);
 
                   return (
                     <Row className={styles.reviewItem} key={index}>
@@ -153,12 +155,10 @@ const Review = () => {
                         {[...Array(rate)].map((e, i) => {
                           return (
                             <AiFillStar color="#F6DE05" key={i} size={30} />
-                          )
+                          );
                         })}
                         {[...Array(greyStars)].map((e, i) => {
-                          return (
-                            <AiFillStar key={i} color="grey" size={30} />
-                          )
+                          return <AiFillStar key={i} color="grey" size={30} />;
                         })}
                       </div>
                       <div className={styles.reviewProfile}>
@@ -190,7 +190,7 @@ const Review = () => {
                     </Row>
                   );
                 })
-              }
+              )}
             </div>
           </div>
         </div>

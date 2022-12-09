@@ -2,11 +2,18 @@ import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { Button, Col, Form, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Form,
+  OverlayTrigger,
+  Row,
+  Tooltip,
+} from "react-bootstrap";
 import { AiFillEdit } from "react-icons/ai";
 import { getCookie } from "cookies-next";
-import dynamic from 'next/dynamic'
-import { Toaster, toast } from "react-hot-toast"
+import dynamic from "next/dynamic";
+import { Toaster, toast } from "react-hot-toast";
 // Import Component
 import styles from "../../styles/Detail.module.css";
 import { AddModal } from "../../components/AddModal";
@@ -16,8 +23,8 @@ function Detail() {
   const [show, setShow] = useState(false);
   const [showAddFoto, setShowAddFoto] = useState(false);
   const [detail, setDetail] = useState([]);
-  const [id, setId] = useState("")
-  const [result, setResult] = useState(null)
+  const [id, setId] = useState("");
+  const [result, setResult] = useState(null);
   const [venue, setVenue] = useState({
     name_venue: "",
     Address_venue: "",
@@ -25,12 +32,12 @@ function Detail() {
     longitude: parseInt(),
     description_venue: "",
   });
-  const [inputFoto, setInputFoto] = useState({})
+  const [inputFoto, setInputFoto] = useState({});
 
   // get detail venue
   const getDetail = () => {
     axios
-      .get(`https://grupproject.site/venues/${getCookie("id")}`)
+      .get(`https://altapro.online/venues/${getCookie("id")}`)
       .then((res) => {
         setDetail(res.data.data);
       });
@@ -38,27 +45,27 @@ function Detail() {
 
   useEffect(() => {
     getDetail();
-    setId(getCookie("user_id"))
+    setId(getCookie("user_id"));
   }, []);
 
   // add foto
   const handleForm = (e) => {
-    const files = e.target.files
-    setInputFoto(files)
+    const files = e.target.files;
+    setInputFoto(files);
   };
   const handleFoto = (e) => {
-    e.preventDefault()
-    const data = new FormData(e.target)
-    data.append("foto_venue", inputFoto[0])
+    e.preventDefault();
+    const data = new FormData(e.target);
+    data.append("foto_venue", inputFoto[0]);
 
-    axios.post(`https://grupproject.site/venues/foto/${getCookie("id")}`, data)
-      .then(res => {
-        const RES = res.data
-        getDetail()
-        swal(RES.status, RES.message, "success")
-          .then(setShowAddFoto(false))
+    axios
+      .post(`https://altapro.online/venues/foto/${getCookie("id")}`, data)
+      .then((res) => {
+        const RES = res.data;
+        getDetail();
+        swal(RES.status, RES.message, "success").then(setShowAddFoto(false));
       })
-      .catch(err => console.log(err))
+      .catch((err) => console.log(err));
   };
 
   // edit venue
@@ -87,7 +94,7 @@ function Detail() {
     };
 
     const myPromise = axios
-      .put(`https://grupproject.site/venues/${getCookie("id")}`, data)
+      .put(`https://altapro.online/venues/${getCookie("id")}`, data)
       .then(() => {
         getDetail();
         setShow(false);
@@ -99,15 +106,15 @@ function Detail() {
     });
   };
 
-  const ShowMap = dynamic(() => import('../../components/ShowMap'), {
+  const ShowMap = dynamic(() => import("../../components/ShowMap"), {
     ssr: false,
-  })
+  });
 
   useEffect(() => {
-    const idN = parseInt(id)
-    const newResult = idN === detail.user_id
-    setResult(newResult)
-  }, [detail,id])
+    const idN = parseInt(id);
+    const newResult = idN === detail.user_id;
+    setResult(newResult);
+  }, [detail, id]);
 
   return (
     <Row className={`${styles.container}`}>
@@ -130,22 +137,25 @@ function Detail() {
           <Row>
             <div className={styles.descTitle}>
               <h5>Description :</h5>
-              {result ? <OverlayTrigger
-                key="top"
-                placement="top"
-                overlay={
-                  <Tooltip id={`tooltip-top`}>Edit this page ?</Tooltip>
-                }
-              >
-                <Button
-                  variant="success"
-                  className={styles.buttonEdit}
-                  onClick={() => setShow(true)}
+              {result ? (
+                <OverlayTrigger
+                  key="top"
+                  placement="top"
+                  overlay={
+                    <Tooltip id={`tooltip-top`}>Edit this page ?</Tooltip>
+                  }
                 >
-                  <AiFillEdit size={35} />
-                </Button>
-              </OverlayTrigger> : <></>
-              }
+                  <Button
+                    variant="success"
+                    className={styles.buttonEdit}
+                    onClick={() => setShow(true)}
+                  >
+                    <AiFillEdit size={35} />
+                  </Button>
+                </OverlayTrigger>
+              ) : (
+                <></>
+              )}
             </div>
           </Row>
           <Row>
@@ -155,7 +165,9 @@ function Detail() {
             <h5 className="mb-2 fw-reguler">Lokasi :</h5>
             <p className={`${styles.fontLato} mb-4`}>{detail.address_venue}</p>
             <div className="p-2" style={{ backgroundColor: "lightgrey" }}>
-              <div className="my-1 mb-2 mx-auto text-dark w-50 text-center fs-6">Click map to see location</div>
+              <div className="my-1 mb-2 mx-auto text-dark w-50 text-center fs-6">
+                Click map to see location
+              </div>
               <ShowMap marker={detail} />
             </div>
           </Row>
@@ -172,6 +184,6 @@ function Detail() {
       />
     </Row>
   );
-};
+}
 
 export default Detail;
