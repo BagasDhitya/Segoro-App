@@ -7,14 +7,14 @@ import { Accordion, Badge, Col, Row } from "react-bootstrap";
 
 const Index = () => {
   const [list, setList] = useState([]);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   const getHistory = () => {
     axios
-      .get(`https://grupproject.site/history/?user_id=${getCookie("user_id")}`)
+      .get(`https://altapro.online/history/?user_id=${getCookie("user_id")}`)
       .then((res) => {
-        setList(res.data.data)
-        setLoading(false)
+        setList(res.data.data);
+        setLoading(false);
       });
   };
 
@@ -29,14 +29,15 @@ const Index = () => {
       <Row className="ms-5 my-5">
         <h2>Booking History</h2>
       </Row>
-      {loading ?
+      {loading ? (
         <ReactLoading
-        className="mx-auto d-flex justify-content-center"
+          className="mx-auto d-flex justify-content-center"
           type="bubbles"
           color="#81ADA8"
           height={700}
           width={400}
-        /> :
+        />
+      ) : (
         <>
           {list?.length < 1 ? (
             <p className="fs-5 text-center">Booking History is Empty</p>
@@ -54,7 +55,12 @@ const Index = () => {
                             {item.name_user}
                           </Row>
                           <Col lg={2} className="d-flex align-items-center">
-                            <Image alt="" src="/futsal.jpg" width={300} height={240} />
+                            <Image
+                              alt=""
+                              src="/futsal.jpg"
+                              width={300}
+                              height={240}
+                            />
                           </Col>
                           <Col lg={6} className="py-2">
                             <p className="fs-5 fw-bold my-2 lh-sm">
@@ -69,10 +75,15 @@ const Index = () => {
                             lg={4}
                             className="d-flex justify-content-center align-items-center"
                           >
-                            <Badge bg={(
-                              item.status_payment === "Pending" && "warning" || 
-                              item.status_payment === "Paid" && "success"
-                            )}>{item.status_payment}</Badge>
+                            <Badge
+                              bg={
+                                (item.status_payment === "Pending" &&
+                                  "warning") ||
+                                (item.status_payment === "Paid" && "success")
+                              }
+                            >
+                              {item.status_payment}
+                            </Badge>
                           </Col>
                         </Row>
                       </Accordion.Header>
@@ -102,8 +113,7 @@ const Index = () => {
             })
           )}
         </>
-      }
-
+      )}
     </Row>
   );
 };

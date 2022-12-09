@@ -40,7 +40,7 @@ const Index = () => {
   // get all booking list
   const getBookingList = async () => {
     await axios
-      .get(`https://grupproject.site/bookings?user_id=${getCookie("user_id")}`)
+      .get(`https://altapro.online/bookings?user_id=${getCookie("user_id")}`)
       .then((res) => {
         setAllBooking(res.data.data);
       });
@@ -66,7 +66,7 @@ const Index = () => {
     const { payment_method } = paymentMethod;
     const data = { payment_method: payment_method };
     const myPromise = axios
-      .post(`https://grupproject.site/bookings/${id}/addpayment`, data)
+      .post(`https://altapro.online/bookings/${id}/addpayment`, data)
       .then(() => {
         getBookingList();
         setVa(va);
@@ -91,7 +91,7 @@ const Index = () => {
   const deleteBooking = (id) => {
     var config = {
       method: "delete",
-      url: `https://grupproject.site/bookings/${id}`,
+      url: `https://altapro.online/bookings/${id}`,
     };
     const myPromise = axios(config).then(() => {
       getBookingList();
@@ -103,7 +103,7 @@ const Index = () => {
     });
   };
 
-  const handleSubmit = () => { };
+  const handleSubmit = () => {};
 
   return (
     <Row className="mb-5">
@@ -130,151 +130,177 @@ const Index = () => {
           } = obj;
           return (
             <>
-            {status_payment === "pending" && <Row
-              key={index}
-              className="w-75 mx-auto d-flex border-bottom border-5 shadow-sm pb-4"
-            >
-              <Row className="ms-0 my-2 fs-4 fw-bold">{name_user}</Row>
-              <Col lg={2} className="d-flex align-items-center">
-                <Image alt="" src="/basket.jpg" width={300} height={240} />
-              </Col>
-              <Col lg={6} className="py-2">
-                <p className="fs-5 fw-bold my-2 lh-sm">
-                  {name_venue} - {category}
-                </p>
-                <p>
-                  {start_hours} - {end_hours}
-                </p>
-              </Col>
-              <Col
-                lg={4}
-                className="d-flex justify-content-center align-items-center"
-              >
-                <Badge pill bg="primary">
-                  {status_payment}
-                </Badge>
-                <Button
-                  className={`${styles.button}`}
-                  onClick={() => setShow(true)}
+              {status_payment === "pending" && (
+                <Row
+                  key={index}
+                  className="w-75 mx-auto d-flex border-bottom border-5 shadow-sm pb-4"
                 >
-                  Rp {total_price}
-                </Button>
-                <AiOutlineDelete
-                  className={`${styles.icon}`}
-                  color="#EE0000"
-                  size={30}
-                  onClick={() => deleteBooking(booking_id)}
-                />
-              </Col>
-              {/* Modal Payment Method */}
-              <Modal centered show={show} onHide={() => setShow(false)}>
-                <Modal.Header
-                  closeButton
-                  style={{ backgroundColor: "#D9EFED" }}
-                >
-                  <Modal.Title>Payment Method</Modal.Title>
-                </Modal.Header>
-                <Form
-                  onSubmit={(e) =>
-                    getPaymentMethod(e, booking_id, virtual_account)
-                  }
-                >
-                  <Modal.Body>
-                    <ListGroup onChange={(e) => inputPayment(e)}>
-                      <Form.Check
-                        type="radio"
-                        id="BCA"
-                        className="d-flex flex-row-reverse justify-content-between mb-2"
-                      >
-                        <Form.Check.Input type="radio" name="payment_method" />
-                        <Form.Check.Label className={styles.boxbank}>
-                          <div>
-                            <Image alt="" src="/bca.png" width={40} height={40} />
-                          </div>
-                          <div>Bank BCA</div>
-                        </Form.Check.Label>
-                      </Form.Check>
-                      <Form.Check
-                        type="radio"
-                        id="BNI"
-                        className="d-flex flex-row-reverse justify-content-between mb-2"
-                      >
-                        <Form.Check.Input type="radio" name="payment_method" />
-                        <Form.Check.Label className={styles.boxbank}>
-                          <div>
-                            <Image alt="" src="/bni.png" width={40} height={40} />
-                          </div>
-                          <div>Bank BNI</div>
-                        </Form.Check.Label>
-                      </Form.Check>
-                      <Form.Check
-                        type="radio"
-                        id="BRI"
-                        className="d-flex flex-row-reverse justify-content-between"
-                      >
-                        <Form.Check.Input type="radio" name="payment_method" />
-                        <Form.Check.Label className={styles.boxbank}>
-                          <div>
-                            <Image alt="" src="/bri.png" width={40} height={40} />
-                          </div>
-                          <div>Bank BRI</div>
-                        </Form.Check.Label>
-                      </Form.Check>
-                    </ListGroup>
-                  </Modal.Body>
-                  <Modal.Footer
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      backgroundColor: "#D9EFED",
-                    }}
+                  <Row className="ms-0 my-2 fs-4 fw-bold">{name_user}</Row>
+                  <Col lg={2} className="d-flex align-items-center">
+                    <Image alt="" src="/basket.jpg" width={300} height={240} />
+                  </Col>
+                  <Col lg={6} className="py-2">
+                    <p className="fs-5 fw-bold my-2 lh-sm">
+                      {name_venue} - {category}
+                    </p>
+                    <p>
+                      {start_hours} - {end_hours}
+                    </p>
+                  </Col>
+                  <Col
+                    lg={4}
+                    className="d-flex justify-content-center align-items-center"
                   >
-                    <div>
-                      <div>Total Cost</div>
-                      <h5>Rp {total_price}</h5>
-                    </div>
-                    <div>
-                      <button
+                    <Badge pill bg="primary">
+                      {status_payment}
+                    </Badge>
+                    <Button
+                      className={`${styles.button}`}
+                      onClick={() => setShow(true)}
+                    >
+                      Rp {total_price}
+                    </Button>
+                    <AiOutlineDelete
+                      className={`${styles.icon}`}
+                      color="#EE0000"
+                      size={30}
+                      onClick={() => deleteBooking(booking_id)}
+                    />
+                  </Col>
+                  {/* Modal Payment Method */}
+                  <Modal centered show={show} onHide={() => setShow(false)}>
+                    <Modal.Header
+                      closeButton
+                      style={{ backgroundColor: "#D9EFED" }}
+                    >
+                      <Modal.Title>Payment Method</Modal.Title>
+                    </Modal.Header>
+                    <Form
+                      onSubmit={(e) =>
+                        getPaymentMethod(e, booking_id, virtual_account)
+                      }
+                    >
+                      <Modal.Body>
+                        <ListGroup onChange={(e) => inputPayment(e)}>
+                          <Form.Check
+                            type="radio"
+                            id="BCA"
+                            className="d-flex flex-row-reverse justify-content-between mb-2"
+                          >
+                            <Form.Check.Input
+                              type="radio"
+                              name="payment_method"
+                            />
+                            <Form.Check.Label className={styles.boxbank}>
+                              <div>
+                                <Image
+                                  alt=""
+                                  src="/bca.png"
+                                  width={40}
+                                  height={40}
+                                />
+                              </div>
+                              <div>Bank BCA</div>
+                            </Form.Check.Label>
+                          </Form.Check>
+                          <Form.Check
+                            type="radio"
+                            id="BNI"
+                            className="d-flex flex-row-reverse justify-content-between mb-2"
+                          >
+                            <Form.Check.Input
+                              type="radio"
+                              name="payment_method"
+                            />
+                            <Form.Check.Label className={styles.boxbank}>
+                              <div>
+                                <Image
+                                  alt=""
+                                  src="/bni.png"
+                                  width={40}
+                                  height={40}
+                                />
+                              </div>
+                              <div>Bank BNI</div>
+                            </Form.Check.Label>
+                          </Form.Check>
+                          <Form.Check
+                            type="radio"
+                            id="BRI"
+                            className="d-flex flex-row-reverse justify-content-between"
+                          >
+                            <Form.Check.Input
+                              type="radio"
+                              name="payment_method"
+                            />
+                            <Form.Check.Label className={styles.boxbank}>
+                              <div>
+                                <Image
+                                  alt=""
+                                  src="/bri.png"
+                                  width={40}
+                                  height={40}
+                                />
+                              </div>
+                              <div>Bank BRI</div>
+                            </Form.Check.Label>
+                          </Form.Check>
+                        </ListGroup>
+                      </Modal.Body>
+                      <Modal.Footer
                         style={{
-                          background: "#405654",
-                          color: "#ECF7F6",
-                          paddingTop: "5px",
-                          paddingBottom: "5px",
-                          paddingRight: "20px",
-                          paddingLeft: "20px",
-                          borderRadius: "10px",
-                          border: "none",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          backgroundColor: "#D9EFED",
                         }}
-                        onMouseEnter={payButtonEnter}
                       >
-                        Pay
-                      </button>
-                    </div>
-                  </Modal.Footer>
-                </Form>
-              </Modal>
+                        <div>
+                          <div>Total Cost</div>
+                          <h5>Rp {total_price}</h5>
+                        </div>
+                        <div>
+                          <button
+                            style={{
+                              background: "#405654",
+                              color: "#ECF7F6",
+                              paddingTop: "5px",
+                              paddingBottom: "5px",
+                              paddingRight: "20px",
+                              paddingLeft: "20px",
+                              borderRadius: "10px",
+                              border: "none",
+                            }}
+                            onMouseEnter={payButtonEnter}
+                          >
+                            Pay
+                          </button>
+                        </div>
+                      </Modal.Footer>
+                    </Form>
+                  </Modal>
 
-              {/* Modal for deliver virtual account */}
-              <Modal centered show={showVa} onHide={() => setShowVa(false)}>
-                <Modal.Body>
-                  <div>
-                    This is your virtual account payment. Please pay the bill
-                    before {transaction_exp}. We have sent your invoice to
-                    email.
-                  </div>
-                  <div>
-                    <h5>Virtual Account</h5>
-                    <h3>{virtual_account}</h3>
-                  </div>
-                  <div>
-                    <p>Please confirm your payment</p>
-                  </div>
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button onClick={confirmPayment}>Confirm Payment</Button>
-                </Modal.Footer>
-              </Modal>
-            </Row>}
+                  {/* Modal for deliver virtual account */}
+                  <Modal centered show={showVa} onHide={() => setShowVa(false)}>
+                    <Modal.Body>
+                      <div>
+                        This is your virtual account payment. Please pay the
+                        bill before {transaction_exp}. We have sent your invoice
+                        to email.
+                      </div>
+                      <div>
+                        <h5>Virtual Account</h5>
+                        <h3>{virtual_account}</h3>
+                      </div>
+                      <div>
+                        <p>Please confirm your payment</p>
+                      </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button onClick={confirmPayment}>Confirm Payment</Button>
+                    </Modal.Footer>
+                  </Modal>
+                </Row>
+              )}
             </>
           );
         })
