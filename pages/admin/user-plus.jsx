@@ -6,13 +6,13 @@ import {
   Row,
   Table,
   Tooltip,
-  Modal
+  Modal,
 } from "react-bootstrap";
 import { RiArrowGoBackLine } from "react-icons/ri";
 import { FiEdit } from "react-icons/fi";
 import { useRouter } from "next/router";
 import axios from "axios";
-import Image from "next/image"
+import Image from "next/image";
 import ReactLoading from "react-loading";
 import styles from "../../styles/Admin.module.css";
 import { VerifyModal } from "../../components/AddModal";
@@ -23,25 +23,26 @@ const UserPlus = () => {
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
   const [shows, setShows] = useState(false);
-  const [list, setList] = useState([])
+  const [list, setList] = useState([]);
 
   const getUser = () => {
-    axios.get("https://grupproject.site/users")
-      .then((res) => setList(res.data.data))
-  }
+    axios
+      .get("https://altapro.online/users")
+      .then((res) => setList(res.data.data));
+  };
   useEffect(() => {
-    getUser()
-  }, [])
+    getUser();
+  }, []);
 
   const handleShows = (breakpoint) => {
     setFullscreen(breakpoint);
     setShows(true);
-  }
+  };
 
   const handleImage = (image) => {
-    setImage(image)
-    handleShows(true)
-  }
+    setImage(image);
+    handleShows(true);
+  };
 
   return (
     <div className={`${styles.container} container`}>
@@ -64,12 +65,13 @@ const UserPlus = () => {
               return (
                 <tr key={index}>
                   <td>
-                    <Image style={{ cursor: "zoom-in" }} 
-                    alt=""
-                    width={50} 
-                    height={50} 
-                    onClick={() => handleImage(user.foto_user)} 
-                    src={user.foto_user ? user.foto_user : "/profile.jpg"} 
+                    <Image
+                      style={{ cursor: "zoom-in" }}
+                      alt=""
+                      width={50}
+                      height={50}
+                      onClick={() => handleImage(user.foto_user)}
+                      src={user.foto_user ? user.foto_user : "/profile.jpg"}
                     />
                   </td>
                   <td className="pt-4 fs-6">{user.name_user}</td>
@@ -80,7 +82,7 @@ const UserPlus = () => {
                     {user.user_owner ? "+" : ""}
                   </td>
                 </tr>
-              )
+              );
             })}
           </tbody>
         </Table>
@@ -101,7 +103,11 @@ const UserPlus = () => {
         </OverlayTrigger>
       </div>
 
-      <Modal show={shows} fullscreen={fullscreen} onHide={() => setShows(false)}>
+      <Modal
+        show={shows}
+        fullscreen={fullscreen}
+        onHide={() => setShows(false)}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Image</Modal.Title>
         </Modal.Header>
@@ -113,11 +119,7 @@ const UserPlus = () => {
             width={300}
             className={`d-flex `}
           />
-          <Image
-          alt=""
-            src={image}
-            layout="fill"
-          />
+          <Image alt="" src={image} layout="fill" />
         </Modal.Body>
       </Modal>
       {/* Verify Modal */}

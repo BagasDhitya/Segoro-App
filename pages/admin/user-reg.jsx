@@ -5,45 +5,46 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import ReactLoading from "react-loading";
 import Image from "next/image";
-import { Toaster, toast } from "react-hot-toast"
+import { Toaster, toast } from "react-hot-toast";
 import styles from "../../styles/Admin.module.css";
 
 const UserReg = () => {
-
-  const [list, setList] = useState([])
+  const [list, setList] = useState([]);
   const [image, setImage] = useState("");
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
 
   const router = useRouter();
   const getUser = () => {
-    axios.get("https://grupproject.site/users/request")
+    axios
+      .get("https://altapro.online/users/request")
       .then((res) => setList(res.data.data))
-      .catch(err => console.error(err.response))
-  }
+      .catch((err) => console.error(err.response));
+  };
   useEffect(() => {
-    getUser()
-  }, [])
+    getUser();
+  }, []);
 
   const acceptUser = (id) => {
-    const myPromise = axios.put(`https://grupproject.site/users/adminapprove/${id}`)
-      .then(() => getUser())
+    const myPromise = axios
+      .put(`https://altapro.online/users/adminapprove/${id}`)
+      .then(() => getUser());
     toast.promise(myPromise, {
       loading: "Please wait...",
       success: "Accept Successfully",
       error: "Accept Failed",
     });
-  }
+  };
 
   const handleShows = (breakpoint) => {
     setFullscreen(breakpoint);
     setShow(true);
-  }
+  };
 
   const handleImage = (image) => {
-    setImage(image)
-    handleShows(true)
-  }
+    setImage(image);
+    handleShows(true);
+  };
 
   return (
     <div className={`${styles.container} container`}>
@@ -64,18 +65,32 @@ const UserReg = () => {
           </thead>
           <tbody>
             {list?.map((user, index) => {
-              console.log(user)
+              console.log(user);
               return (
                 <tr key={index}>
                   <td>{user.name_user}</td>
                   <td>{user.email}</td>
                   <td>{user.address_user}</td>
                   <td>
-                    <Image alt="" style={{ cursor: "zoom-in" }} onClick={() => handleImage(user.foto_user)} src={user.foto_user} width={50} height={50} />
+                    <Image
+                      alt=""
+                      style={{ cursor: "zoom-in" }}
+                      onClick={() => handleImage(user.foto_user)}
+                      src={user.foto_user}
+                      width={50}
+                      height={50}
+                    />
                   </td>
-                  <td><Button onClick={() => acceptUser(user.id)} className={`${styles.accept}`}>Accept</Button></td>
+                  <td>
+                    <Button
+                      onClick={() => acceptUser(user.id)}
+                      className={`${styles.accept}`}
+                    >
+                      Accept
+                    </Button>
+                  </td>
                 </tr>
-              )
+              );
             })}
           </tbody>
         </Table>
@@ -108,11 +123,7 @@ const UserReg = () => {
             width={300}
             className={`d-flex `}
           />
-          <Image
-            alt=""
-            src={image}
-            layout="fill"
-          />
+          <Image alt="" src={image} layout="fill" />
         </Modal.Body>
       </Modal>
     </div>
