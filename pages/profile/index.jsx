@@ -27,16 +27,16 @@ const Index = () => {
   }, [setStatusNav]);
 
   const router = useRouter();
-  const { fotoProfile, setFotoProfile } = useFotoContext()
+  const { fotoProfile, setFotoProfile } = useFotoContext();
   const [show, setShow] = useState(false);
   const [add, setAdd] = useState("profile");
   const [show2, setShow2] = useState(false);
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [file, setFile] = useState(null)
+  const [file, setFile] = useState(null);
   const [status, setStatus] = useState({
     role: "user",
-    owner: ""
+    owner: "",
   });
   const [update, setUpdate] = useState({
     name_user: "",
@@ -57,23 +57,27 @@ const Index = () => {
   const getProfile = () => {
     setLoading(true);
     axios
-      .get(`https://grupproject.site/users/${getCookie("user_id")}`)
+      .get(`https://altapro.online/users/${getCookie("user_id")}`)
       .then((res) => {
         const data = res.data.data;
         setProfile(data);
         setUpdate({
           ...update,
           name_user: data.name_user,
-          address_user: data.address_user
-        })
-        setLoading(false)
+          address_user: data.address_user,
+        });
+        setLoading(false);
       })
-      .catch(err => console.error(err))
-  }
+      .catch((err) => console.error(err));
+  };
   useEffect(() => {
-    getProfile()
-    setStatus({ ...status, role: getCookie("role"), owner: getCookie("user_owner") })
-  }, [])
+    getProfile();
+    setStatus({
+      ...status,
+      role: getCookie("role"),
+      owner: getCookie("user_owner"),
+    });
+  }, []);
 
   const handleImage = () => {
     setShow(true);
@@ -102,10 +106,10 @@ const Index = () => {
     for (var i in update) {
       data.append(i, update[i]);
     }
-    setCookie("user", update.name_user)
+    setCookie("user", update.name_user);
 
     const myPromise = axios
-      .put("https://grupproject.site/users", data)
+      .put("https://altapro.online/users", data)
       .then((res) => {
         setShow(false);
         getProfile();
@@ -120,19 +124,26 @@ const Index = () => {
   };
 
   const handleReg = (e) => {
-    setFile(e.target.files[0])
-  }
+    setFile(e.target.files[0]);
+  };
 
   const handleRegSubmit = (e) => {
-    e.preventDefault()
-    const data = new FormData()
-    data.append("foto_owner", file)
-    axios.post("https://grupproject.site/users/owner", data)
-      .then(() => swal("Register success", "Please wait admin to aprove your request", "success").then(setShow(false)))
-      .catch(() => swal("Register Failed", "Please try again later", "error"))
-  }
+    e.preventDefault();
+    const data = new FormData();
+    data.append("foto_owner", file);
+    axios
+      .post("https://altapro.online/users/owner", data)
+      .then(() =>
+        swal(
+          "Register success",
+          "Please wait admin to aprove your request",
+          "success"
+        ).then(setShow(false))
+      )
+      .catch(() => swal("Register Failed", "Please try again later", "error"));
+  };
 
-  setFotoProfile(profile?.foto_user)
+  setFotoProfile(profile?.foto_user);
   return (
     <div>
       <div>
@@ -168,7 +179,7 @@ const Index = () => {
                   </div>
                   <div className={styles.itemLabel}>My Schedule</div>
                 </div>
-                {(status.owner &&
+                {status.owner && (
                   <>
                     <h5 className="mt-2 mb-0">Owner</h5>
                     <div
@@ -189,11 +200,10 @@ const Index = () => {
                       </div>
                       <div className={styles.itemLabel}>My Booking List</div>
                     </div>
-                  </>)
+                  </>
+                )}
 
-                }
-
-                {status.role === "admin" &&
+                {status.role === "admin" && (
                   <>
                     <h5 className="mt-2 mb-0">Admin</h5>
                     <div
@@ -206,16 +216,18 @@ const Index = () => {
                       <div className={styles.itemLabel}>Admin Dashboard</div>
                     </div>
                   </>
-                }
-
+                )}
               </div>
 
               <div className={styles.bottomBox}>
-                {!status.owner ?
+                {!status.owner ? (
                   <div className={styles.beOwner}>
                     Become an Owner?
                     <span onClick={() => setShow2(true)}> Click Here!</span>
-                  </div> : <></>}
+                  </div>
+                ) : (
+                  <></>
+                )}
                 <div>
                   <div className={styles.logOut} onClick={handleLogout}>
                     <div>
@@ -275,7 +287,10 @@ const Index = () => {
                     </tr>
                     <tr>
                       <td>Role</td>
-                      <td>{profile?.role}{(status.owner && "+")}</td>
+                      <td>
+                        {profile?.role}
+                        {status.owner && "+"}
+                      </td>
                     </tr>
                     <tr>
                       <td>Address</td>
@@ -300,7 +315,12 @@ const Index = () => {
       />
 
       {/* Modal for register user plus */}
-      <RegisPlus show={show2} handleClose={() => setShow2(false)} handleRegSubmit={handleRegSubmit} handleReg={handleReg} />
+      <RegisPlus
+        show={show2}
+        handleClose={() => setShow2(false)}
+        handleRegSubmit={handleRegSubmit}
+        handleReg={handleReg}
+      />
     </div>
   );
 };

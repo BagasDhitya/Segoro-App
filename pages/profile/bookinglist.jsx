@@ -15,7 +15,7 @@ const Bookinglist = () => {
   // get all booking list
   const getBookingList = () => {
     axios
-      .get(`https://grupproject.site/bookings?UserID=${userId}`)
+      .get(`https://altapro.online/bookings?UserID=${userId}`)
       .then((res) => {
         setAllBooking(res.data.data);
       });
