@@ -1,0 +1,64 @@
+.container {
+    background-color: #ECF7F6;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-radius: 5px;
+    box-shadow: #81ADA8 3px 5px 8px;
+}
+
+.title {
+    text-align: center;
+    padding: 30px;
+}
+
+.titleTable {
+    font-size: larger;
+    font-weight: bold ;
+}
+
+.titleItem {
+    font-weight: bolder;
+}
+
+.button {
+    font-size: 1.2rem;
+    border-radius: 20px;
+    margin: 0px 2rem;
+    background-color: #405654;
+}
+
+.button:hover {
+    font-size: 1.2rem;
+    border-radius: 20px;
+    margin: 0px 2rem;
+    background-color: #81ADA8 !important;
+}
+
+.button:focus {
+    font-size: 1.2rem;
+    border-radius: 20px;
+    margin: 0px 2rem;
+    background-color: #405654;
+}
+
+.icon {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.icon:hover {
+    color: pink !important;
+}
+
+.buttonPay {
+    padding: 10px;
+}
+
+.boxbank {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    font-size: larger;
+    font-weight: bolder;
+}

@@ -1,0 +1,33 @@
+ .close {
+    background-color: rgb(255, 64, 64);
+    border: 1px solid rgb(145, 0, 0);
+    font-weight: bolder;
+    border: none;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px rgb(224, 153, 153);
+    transition: 0.5s ease;
+    color : white;
+}
+.close:hover {
+    background-color: rgb(145, 0, 0);
+}
+
+.save {
+    background-color: #61827E;
+    font-weight: bolder;
+    border: none;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px #A1D8D2;
+    transition: 0.5s ease;
+    color : white;
+}
+.save:hover {
+    background-color: #405654;
+    
+}

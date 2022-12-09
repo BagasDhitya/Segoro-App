@@ -1,0 +1,371 @@
+.fontOpen {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.fontLato {
+    font-family: 'Lato';
+}
+
+.close {
+    background-color: rgb(255, 64, 64);
+    border: 1px solid rgb(145, 0, 0);
+    font-weight: bolder;
+    border: none;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px rgb(224, 153, 153);
+    transition: 0.5s ease;
+    color : white;
+}
+.close:hover {
+    background-color: rgb(145, 0, 0);
+}
+
+.save {
+    background-color: #61827E;
+    font-weight: bolder;
+    border: none;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px #A1D8D2;
+    transition: 0.5s ease;
+    color : white;
+}
+.save:hover {
+    background-color: #405654;
+    
+}
+
+.delete{
+    padding: 10px; 
+    border-radius: 40px;
+    background-color: #f94d63;
+    border: none;
+    transition : 0.5s
+}
+.delete:hover{
+    color: red;
+    background-color: rgb(249, 184, 184);
+}
+
+.container {
+    padding : 80px 50px 50px
+}
+
+.leftCol {
+    display: grid;
+    justify-content: center;
+}
+
+.hoverAdd:hover {
+    opacity: 0.8;
+}
+
+@keyframes mymove {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.imageBox {
+    width: 409px;
+    height: 386px;
+    left: 61px;
+    top: 185px;
+    border-radius: 10px;
+    transition: 0.3s;
+    animation: mymove 0.5s linear;
+}
+
+.scrollImage {
+    vertical-align: middle;
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.imageBoxMain {
+    display: flex;
+    justify-content: center;
+}
+
+.colorBox {
+    position: relative;
+    cursor: pointer;
+}
+
+.colorBoxs {
+    position: relative;
+    cursor : zoom-in
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    color: #405654;
+}
+
+.colorBox:hover .middle {
+    opacity: 1;
+}
+
+.colorBox:hover .imageBox {
+    opacity: 0.3;
+}
+
+.imageItem {
+    font-size: 25px;
+    display: inline-block;
+    padding: 5px !important;
+    transition: 0.3s;
+}
+
+.imageItem:hover {
+    opacity: 0.8;
+}
+
+.imageItem Image {
+    object-fit: cover;
+}
+
+.containerRight {
+    padding-left: 42px;
+}
+
+.title {
+    line-height: 0.8;
+}
+
+.price {
+    font-size: x-large;
+}
+
+.heading {
+    margin-top: 20px;
+    display: flex;
+    border-top: 1px solid rgba(196, 195, 195, 0.414);
+    border-bottom: 1px solid rgba(196, 195, 195, 0.414);
+    width: 75%;
+    height: 40px;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    align-items: flex-end;
+    padding-top: 0;
+}
+
+.heading h5 {
+    font-weight: bolder;
+}
+
+.headingActive {
+    margin-top: 5px;
+    color: #A1D8D2;
+    cursor: pointer;
+    transition: 0.3s;
+    border-bottom: 1px solid #A1D8D2;
+}
+
+.headingActive:hover {
+    color: #405654;
+    border-bottom: 1px solid #405654;
+}
+
+.headingOff {
+    color: #E3E3E3;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.headingOff:hover {
+    color: #A1D8D2;
+    border-bottom: 1px solid #A1D8D2;
+}
+
+.description {
+    margin-top: 20px;
+}
+
+.descTitle {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonEdit {
+    background-color: #405654;
+    padding: 10px;
+    color: #ECF7F6;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 12vh;
+    right: 10vh;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+    transition: 0.3s;
+    z-index: 999 !important;
+}
+
+.buttonEdit:hover {
+    background-color: #A1D8D2 !important;
+    color: #405654 !important;
+}
+
+.buttonEdit:focus {
+    background-color: #405654 !important;
+    color: #ECF7F6 !important;
+}
+
+.descBody {
+    margin-top: 10px;
+}
+
+.location {
+    line-height: 0.8;
+}
+
+.map {
+    z-index: -1;
+}
+
+.scrollImage::-webkit-scrollbar {
+    width: 10px;
+}
+
+.scrollImage::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.scrollImage::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+}
+
+.scrollImage::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    border-radius: 10px;
+}
+
+@keyframes example {
+    from {scale: 0;}
+    to {scale: 1;}
+  }
+
+.listContainer {
+    width: 95%;
+    margin: 0 auto;
+    animation : example 2s ease
+}
+
+.cardItem {
+    transition: 0.3s;
+
+    cursor : pointer
+}
+
+.cardItem:hover {
+    box-shadow: 10px 10px 14px rgba(0, 0, 0, 0.25);
+    transform: scale(1.1);
+}
+
+/* Phone xs */
+@media (max-width : 575.98px) {
+    .container {
+        padding-top: 50px;
+    }
+
+    .title {
+        line-height: 1.2;
+    }
+
+    .heading {
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .containerRight {
+        padding-left: 0;
+        margin-top: 20px;
+    }
+
+    .location {
+        line-height: 1.2;
+    }
+
+    .map {
+        z-index: -1;
+        margin-bottom: 80px;
+    }
+    .description {
+        margin-top: 80px;
+    }
+}
+
+/* Phone sm */
+@media (min-width : 575.98px) and (max-width : 767.98px) {
+    .imageBox {
+        margin-left: 12rem;
+        margin-top: 10rem;
+        width: 50%;
+        display: none;
+    }
+
+    .title {
+        padding-top: 2rem;
+    }
+
+    .iconButton {
+        background-color: white;
+        border-style: none;
+        position: absolute;
+        left: 86%;
+        top: 25%;
+        z-index: 99;
+    }
+}
+
+/* Tablet md */
+@media (min-width : 767.98px) and (max-width : 991.98px) {
+    .title {
+        line-height: 1;
+    }
+
+    .heading {
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .containerRight {
+        padding-left: 0;
+        margin-top: 20px;
+    }
+
+    .location {
+        line-height: 1;
+    }
+}
+
+/* Laptop lg*/
+@media (min-width : 991.98px) and (max-width : 1199.98px) {
+    .imageBox {
+        margin-left: 10rem;
+        margin-top: 20vh;
+        width: 35%;
+    }
+}

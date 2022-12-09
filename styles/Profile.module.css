@@ -1,0 +1,194 @@
+.container {
+    margin-bottom: 30px;
+    transition: 0.3s
+}
+
+.colLeft {
+    background-color: #ECF7F6;
+    margin-top: 40px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    padding: 30px;
+}
+
+.topBox {
+    margin-bottom: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.itemLeft {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.itemLeft:hover {
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #405654;
+    color: #ECF7F6;
+}
+
+.itemLabel {
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.bottomBox {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.beOwner {
+    font-size: larger;
+    font-weight: bolder;
+    color: #61827E;
+}
+
+.beOwner span {
+    transition: 0.2s;
+    cursor: pointer;
+    color: #405654;
+}
+
+.beOwner span:hover {
+    color: #A1D8D2;
+}
+
+.logOut {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    cursor: pointer;
+    color: red;
+}
+
+.logOut:hover {
+    color: rgb(168, 6, 6);
+}
+
+.colRight {
+    margin-top: 40px;
+    margin-right: 80px;
+}
+
+.topItem {
+    border-bottom: 1px solid #81ada87f;
+}
+
+.imageBox {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.imageProfile {
+    object-fit: cover;
+    border-radius: 50%;
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    z-index: 99;
+}
+
+.loadingImage {
+    top: 28%;
+    left: 28%;
+}
+
+.colorBox {
+    background-color: #A1D8D2;
+    position: relative;
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    cursor: pointer;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    color: #405654;
+}
+
+.colorBox:hover .imageProfile {
+    opacity: 0.3;
+}
+
+.colorBox:hover .middle {
+    opacity: 1;
+}
+
+.colorBox:hover .loadingImage {
+    display: none;
+}
+
+.tableBox {
+    width: 60%;
+}
+
+/* Phone xs */
+@media (max-width : 575.98px) {
+    .colLeft {
+        margin-bottom: 30px;
+        padding: 30px;
+    }
+
+    .colRight {
+        margin-top: 5px;
+        margin-right: 20px;
+        margin-left: 20px;
+        margin-bottom: 40px;
+    }
+
+    .tableBox {
+        width: 100%;
+    }
+}
+
+/* Phone sm */
+/* (min-width : 575.98px) and  */
+@media (max-width : 767.98px) {
+    .container {
+        display: flex;
+        flex-direction: column-reverse;
+        margin-left: 10px;
+    }
+}
+
+/* Tablet md */
+@media (min-width : 767.98px) and (max-width : 991.98px) {
+    .colLeft {
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 50px;
+        padding: 30px;
+    }
+
+    .colRight {
+        margin-top: 40px;
+        margin-right: 40px;
+    }
+
+    .tableBox {
+        width: 100%;
+    }
+}
+
+/* Laptop lg*/
+@media (min-width : 991.98px) and (max-width : 1199.98px) {}

@@ -1,0 +1,99 @@
+.container {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 80px;
+    padding-bottom: 50px;
+}
+
+.containerRight {
+    padding-left: 30px;
+}
+
+.titleBody {
+    margin-top: 15px;
+}
+.titleBody h5 {
+    font-weight: bold;
+}
+
+.buttonAdd {
+    background-color: #405654;
+    padding: 10px;
+    color: #ECF7F6;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 12vh;
+    right: 10vh;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+    transition: 0.3s;
+}
+.buttonAdd:hover {
+    background-color: #A1D8D2 !important;
+    color: #405654 !important;
+}
+
+.reviewBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.reviewItem {
+    width: 85%;
+    padding: 10px;
+    background: #FFFFFF;
+    border: 1px solid #EAEAEA;
+    box-shadow: 1px 3px 5px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+}
+
+.reviewProfile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+    /* margin-bottom: 5px; */
+}
+.imageProfile {
+    object-fit: cover;
+    border-radius: 50%;
+}
+.nameProfile h6 {
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.imageBox {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.imageReview {
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Phone xs */
+@media (max-width : 575.98px) {
+    .reviewItem {
+        width: 100%;
+    }
+    .reviewBody {
+        margin-top: 80px;
+    }
+}
+
+/* Phone sm */
+@media (min-width : 575.98px) and (max-width : 767.98px) {
+    .reviewItem {
+        width: 100%;
+    }
+}
+
+/* Tablet md */
+@media (min-width : 767.98px) and (max-width : 991.98px) {
+    .reviewItem {
+        width: 100%;
+    }
+}

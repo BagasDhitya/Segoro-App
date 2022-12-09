@@ -1,0 +1,116 @@
+.container {
+    background-color: #A1D8D2;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px 6px 6px rgba(161, 216, 210, 0.25);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.link {
+    color: #202B2A;
+    font-size: 20px;
+    font-weight: bolder;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.link:hover {
+    color: #D9EFED;
+    font-size: 25px;
+    font-weight: bolder;
+    text-shadow: 2px 2px #61827E;
+}
+
+.linkActive {
+    color: #D9EFED;
+    font-size: 20px;
+    font-weight: bolder;
+    cursor: context-menu;
+    transition: 0.3s;
+}
+
+.linkActive:hover {
+    color: #D9EFED;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.navBox {
+    display: flex !important;
+    justify-content: space-around;
+    text-align: end;
+    margin-right: -10rem;
+}
+
+.profileBox {
+    display: flex !important;
+    align-items: center;
+    margin-right: -13rem;
+    padding-left: 1rem;
+}
+
+.profileImage {
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.profileImage:hover {
+    border-radius: 50%;
+    cursor: pointer;
+    scale : 1.1
+}
+
+
+/* Phone sm */
+@media (min-width : 0) and (max-width : 767.98px) {
+    .link {
+        display: none;
+    }
+
+    .profileImage {
+        display: none;
+    }
+
+    .container {
+        z-index: 9999;
+        position: fixed;
+        min-height: 2rem;
+        max-height: 4rem;
+        align-items: center;
+        bottom: 0;
+        left: 0.8rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        border-radius: 3px 3px 35px 35px;
+        box-shadow: 0px 6px 6px rgba(161, 216, 210, 0.25);
+    }
+
+    .icon {
+        transition: 0.5s;
+    }
+
+    @keyframes animate-text {
+        from {
+            transform: scale(0);
+            opacity: 0;
+        }
+
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .titleIcon {
+        animation: animate-text 0.5s linear;
+        font-size: 12px;
+        line-height: 0px;
+        color: #ECF7F6;
+    }
+}

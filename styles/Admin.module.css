@@ -1,0 +1,84 @@
+.title {
+    text-align: center;
+    padding: 70px;
+    padding-top: 90px;
+}
+
+.column {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.box {
+    border: 1px solid #61827E;
+    padding-top: 50px;
+    padding-bottom: 60px;
+    padding-left: 80px;
+    padding-right: 80px;
+    background-color: #61827E;
+    color: #ECF7F6;
+    border-radius: 30px;
+    box-shadow: 5px 5px 4px #A1D8D2;
+    transition: ease 0.5s;
+    cursor: pointer;
+}
+.box:hover {
+    background-color: #B4E0DB;
+    border-color: #B4E0DB;
+}
+
+/* List user reguler */
+.container {
+    background-color: #ECF7F6;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-radius: 5px;
+    box-shadow: #81ADA8 3px 5px 8px;
+}
+
+.titleUser {
+    text-align: center;
+    padding: 30px;
+}
+
+.titleTable {
+    font-size: larger;
+    font-weight: bold ;
+}
+
+/* in user plus page */
+.icon {
+    cursor: pointer;
+}
+
+/* button go back */
+.goBack {
+    background-color: #405654;
+    padding: 10px;
+    color: #ECF7F6;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 12vh;
+    right: 10vh;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+    transition: 0.3s;
+}
+.goBack:hover {
+    background-color: #A1D8D2 !important;
+    color: #405654 !important;
+}
+
+.accept {
+    background-color: #405654 !important;
+    color: #ECF7F6 !important;
+    transition: 0.3s;
+}
+
+.accept:hover{
+    background-color: #A1D8D2  !important;
+    color: #405654 !important;
+}
+

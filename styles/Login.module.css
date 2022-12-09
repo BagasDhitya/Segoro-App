@@ -1,0 +1,234 @@
+.container {
+    background: linear-gradient(217.09deg, #A1D8D2 62.38%, #C7E8E4 100%);
+    min-height: 149vh;
+    width: 100%;
+}
+
+/* Col kiri */
+.title {
+    margin: auto;
+    width: 80%;
+    font-size: 56px;
+    font-weight: bold;
+    text-align: center;
+    padding: 5rem 20px;
+    font-weight: 700;
+    line-height: 75px;
+    color: #202B2A;
+}
+
+.imageBox {
+    width: 56%;
+    position: absolute !important;
+    margin-top: -5rem;
+    margin-left: 1rem;
+}
+
+/* Col kanan */
+.containerForm {
+    background-color: white;
+    border-top-left-radius: 36px;
+    border-bottom-left-radius: 36px;
+}
+
+.logoBox {
+    width: 100%;
+    margin: -2rem auto 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.loginTitle {
+    margin-top: -1rem;
+    font-weight: bolder;
+    margin-bottom: 3rem;
+}
+
+.formBox {
+    margin: 1rem auto 0;
+    text-align: center;
+    width: 50%;
+}
+
+.formControl:focus {
+    border-color: #A1D8D2;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(161, 216, 210, 0.6);
+}
+
+.iconButton {
+    background-color: white;
+    border-style: none;
+    position: absolute;
+    left: 90%;
+    top: 25%;
+    z-index: 99;
+}
+
+.loginButton {
+    width: 100%;
+    margin-top: 3rem;
+    background-color: #A1D8D2;
+    font-size: 20px;
+    border: 0.5px solid #A1D8D2;
+    transition: 0.5s;
+    pointer-events: all;
+}
+
+.loading {
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 3rem;
+    background-color: #A1D8D2;
+    border: 0.5px solid #A1D8D2;
+    transition: 0.5s;
+    pointer-events: all;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.loading:focus {
+    background-color: #405654 !important;
+    border: 0.5px solid #405654 !important;
+}
+
+.loginButton:hover {
+    color: white !important;
+    background-color: #405654 !important;
+    border: 0.5px solid #405654 !important;
+    box-shadow: inset;
+}
+
+.loginButton:focus {
+    background-color: #61827E !important;
+    color: white !important;
+    border: 0.5px solid #61827E !important;
+    box-shadow: inset;
+}
+
+.validateText {
+    margin-top: 1rem;
+    text-align: left;
+    color: #474949;
+    font-size: 20px;
+}
+
+.span {
+    margin-left: 5px;
+    color: #81ADA8;
+    cursor: pointer;
+}
+
+.span:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Phone xs */
+@media (max-width : 575.98px) {
+    .imageBox {
+        margin-left: 12rem;
+        margin-top: 20rem;
+        width: 40%;
+        display: none;
+    }
+
+    .iconButton {
+        background-color: white;
+        border-style: none;
+        position: absolute;
+        left: 80%;
+        top: 25%;
+        z-index: 99;
+    }
+
+    .formBox {
+        width: 100%;
+    }
+
+    .containerForm {
+        background-color: white;
+        border-top-left-radius: 36px;
+        border-top-right-radius: 36px;
+        border-bottom-left-radius: 0px;
+        width: 95%;
+        margin: 0 auto !important;
+        margin-left: 15px !important;
+    }
+}
+
+/* Phone sm */
+@media (min-width : 575.98px) and (max-width : 767.98px) {
+    .imageBox {
+        margin-left: 12rem;
+        margin-top: 10rem;
+        width: 50%;
+        display: none;
+    }
+
+    .title {
+        padding-top: 10rem;
+    }
+
+    .iconButton {
+        background-color: white;
+        border-style: none;
+        position: absolute;
+        left: 86%;
+        top: 25%;
+        z-index: 99;
+    }
+
+    .formBox {
+        width: 80%;
+    }
+
+    .containerForm {
+        background-color: white;
+        border-top-left-radius: 36px;
+        border-top-right-radius: 36px;
+        border-bottom-left-radius: 0px;
+        width: 95%;
+        margin: 0 auto !important;
+        margin-left: 20px !important;
+    }
+}
+
+/* Tablet md */
+@media (min-width : 767.98px) and (max-width : 991.98px) {
+    .imageBox {
+        margin-left: 18rem;
+        margin-top: 6rem;
+        width: 40%;
+        display: none;
+    }
+
+    .containerForm {
+        background-color: white;
+        border-top-left-radius: 36px;
+        border-top-right-radius: 36px;
+        border-bottom-left-radius: 0px;
+        width: 95%;
+        margin: 0 auto !important;
+        margin-left: 30px !important;
+    }
+}
+
+/* Laptop lg*/
+@media (min-width : 991.98px) and (max-width : 1199.98px) {
+    .imageBox {
+        margin-left: 10rem;
+        margin-top: 20vh;
+        width: 35%;
+    }
+
+    .iconButton {
+        left: 85%;
+    }
+
+    .loading {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+    }
+
+}
